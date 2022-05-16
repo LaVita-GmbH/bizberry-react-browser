@@ -1,6 +1,6 @@
 # bizberry-react-browser
 
-cookie and localStorage für bizberry-sdk
+cookie and localStorage for bizberry-sdk
 
 ## Getting started
 

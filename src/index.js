@@ -1,5 +1,3 @@
-import { Cookie } from "./cookie"
+import { BrowserStore } from "./store"
 
-export { Cookie }
-
-export default ReactBrowser
+export { BrowserStore }

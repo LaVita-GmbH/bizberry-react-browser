@@ -26,6 +26,9 @@
         "semantic-release": "^19.0.2"
     },
     "dependencies": {
-        "@lavita-io/bizberry-sdk": "^1.0.1"
+    },
+    "peerDependencies": {
+        "@lavita-io/bizberry-react": "^1.3.0",
+        "@lavita-io/bizberry-sdk": "^1.6.0"
     }
 }

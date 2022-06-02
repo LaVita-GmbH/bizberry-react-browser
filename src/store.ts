@@ -27,9 +27,8 @@ export class BrowserStore extends store.AbstractStore {
     }
 
     async set(key: string, value: string, options: store.StoreValueOptionsType = {}): Promise<void> {
-        if (options.isPersistent) Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN })
-
         await super.set(key, value, options)
+        if (options.isPersistent) Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN })
         this.queryClient.setQueryData(this.get_query_key(key), value)
     }
 
@@ -57,9 +56,6 @@ export class BrowserStore extends store.AbstractStore {
 
     useStore(key: string) {
         const queryClient = useQueryClient()
-        return useQuery(this.get_query_key(key), async () => {
-            const data = await this.get(key)
-            return data
-        })
+        return useQuery(this.get_query_key(key), async () => await this.get(key))
     }
 }

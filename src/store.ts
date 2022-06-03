@@ -28,7 +28,7 @@ export class BrowserStore extends store.AbstractStore {
 
     async set(key: string, value: string, options: store.StoreValueOptionsType = {}): Promise<void> {
         await super.set(key, value, options)
-        if (options.isPersistent) Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN })
+        if (options.isPersistent) Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN, expires: 365 })
         this.queryClient.setQueryData(this.get_query_key(key), value)
     }
 

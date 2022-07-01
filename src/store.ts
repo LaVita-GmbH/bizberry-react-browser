@@ -37,7 +37,8 @@ export class BrowserStore extends store.AbstractStore {
 
         if (value === undefined) {
             value = Cookies.get(this.get_cookie_key(key))
-            await super.set(key, value, { isPersistent: true })
+            if(value)
+                await super.set(key, value, { isPersistent: true })
         }
 
         return value

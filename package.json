@@ -39,6 +39,6 @@
     },
     "peerDependencies": {
         "@lavita-io/bizberry-react": "^1.10.0",
-        "@lavita-io/bizberry-sdk": "^1.9.3"
+        "@lavita-io/bizberry-sdk": "^1.10.0"
     }
 }

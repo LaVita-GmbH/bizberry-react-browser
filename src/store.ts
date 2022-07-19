@@ -47,7 +47,7 @@ export class BrowserStore extends store.AbstractStore {
     async del(key: string): Promise<void> {
         await super.del(key)
         try {
-            Cookies.remove(this.get_cookie_key(key))
+            Cookies.remove(this.get_cookie_key(key), { domain: process.env.COOKIE_DOMAIN })
         } catch (error) {
             console.warn(error)
         }

@@ -1,11 +1,10 @@
 import commonjs from "@rollup/plugin-commonjs"
-import packageJson from "./package.json"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import resolve from "@rollup/plugin-node-resolve"
 import typescript from "rollup-plugin-typescript2"
 
 export default {
-    external: ["@lavita-io/bizberry-sdk", "@lavita-io/bizberry-react"],
+    external: ["@lavita-io/bizberry-sdk", "@lavita-io/bizberry-react", "react", "react-dom", "react-query"],
     input: "src/index.ts",
     output: [
         {

@@ -5,14 +5,11 @@ import resolve from "@rollup/plugin-node-resolve"
 import typescript from "rollup-plugin-typescript2"
 
 export default {
-    external: ["@lavita-io/bizberry-sdk", "@lavita-io/bizberry-react", "react", "react-dom", "react-query"],
     input: "src/index.ts",
-    output: [
-        {
-            dir: "./dist",
-            sourcemap: true,
-        },
-    ],
+    output: {
+        dir: "./dist",
+        sourcemap: true,
+    },
     plugins: [
         peerDepsExternal(),
         resolve(),
@@ -21,7 +18,8 @@ export default {
         generatePackageJson({
             outputFolder: "dist",
             baseContents: pkg => ({
-                name: pkg.name,
+                ...pkg,
+                main: "index.js",
             }),
         }),
     ],

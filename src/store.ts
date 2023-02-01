@@ -41,7 +41,7 @@ export class BrowserStore extends store.AbstractStore {
             if (value) await super.set(key, value, { isPersistent: true })
         }
 
-        return value
+        return value || null
     }
 
     async del(key: string): Promise<void> {

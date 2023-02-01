@@ -36,12 +36,12 @@ export class BrowserStore extends store.AbstractStore {
     async get(key: string) {
         let value = await super.get(key)
 
-        if (value === undefined) {
-            value = Cookies.get(this.get_cookie_key(key))
+        if (value === null) {
+            value = Cookies.get(this.get_cookie_key(key)) || null
             if (value) await super.set(key, value, { isPersistent: true })
         }
 
-        return value || null
+        return value
     }
 
     async del(key: string): Promise<void> {

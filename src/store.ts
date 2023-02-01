@@ -1,4 +1,4 @@
-import { QueryClient, useQuery, useQueryClient } from "react-query"
+import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query"
 
 import Cookies from "js-cookie"
 import { store } from "@lavita-io/bizberry-sdk"
@@ -28,7 +28,8 @@ export class BrowserStore extends store.AbstractStore {
 
     async set(key: string, value: string, options: store.StoreValueOptionsType = {}): Promise<void> {
         await super.set(key, value, options)
-        if (options.isPersistent) Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN, expires: 365 })
+        if (options.isPersistent)
+            Cookies.set(this.get_cookie_key(key), value, { domain: process.env.COOKIE_DOMAIN, expires: 365 })
         this.queryClient.setQueryData(this.get_query_key(key), value)
     }
 
@@ -37,8 +38,7 @@ export class BrowserStore extends store.AbstractStore {
 
         if (value === undefined) {
             value = Cookies.get(this.get_cookie_key(key))
-            if(value)
-                await super.set(key, value, { isPersistent: true })
+            if (value) await super.set(key, value, { isPersistent: true })
         }
 
         return value
